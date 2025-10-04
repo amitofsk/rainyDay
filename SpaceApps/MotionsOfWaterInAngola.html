@@ -6,6 +6,7 @@
   <title>Water Movement in Angola</title>
   <!--Big Body Set Up-->
   <style>
+
     body {
       font-family: Arial, sans-serif;
       text-align: center;
@@ -84,11 +85,44 @@
   </section>
 
   <!--Rain Data Section-->
-  <section>
+ <section>
     <h2>Rain Data</h2>
-    <p> Total Percepiation Per Month (Sept 2024-Sept 2025)</p>
-    <!--Put data HERE-->
+    <p>Rain Data explanation here</p>
+    <canvas id="myChart" width="600" height="400"></canvas>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!--Java Chart Part-->
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2024-09-14', '2024-10-08', '2024-11-01', '2024-12-07', '2025-01-12', '2025-02-05', '2025-03-01', '2025-04-06', '2025-07-01', '2025-08-04', '2025-09-09'],
+        datasets: [{
+          label: 'Monthly Sum of Rainfall (inches) From Previous Month',
+          data: [1.96, 1.42, 0.35, 2.27, 3.21, 2.51, 1.4, 2.23, 3.04, 4.19, 1.98, 1.19],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)'
+          ],
+          borderColor: 'rgba(0, 0, 0, 0.3)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 
   <!--Image Layering Section-->
   <section>
