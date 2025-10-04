@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Movement in Angola</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 40px;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    section {
+      margin: 30px auto;
+      max-width: 700px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+
+    img.sample {
+      width: 200px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+    }
+
+    .layer-area {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 30px auto;
+      border: 2px dashed #aaa;
+      background-color: #fff;
+    }
+
+    .layer-area img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.3s ease;
+    }
+
+    .dropdowns {
+      margin-top: 20px;
+    }
+
+    select {
+      margin: 10px;
+      padding: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>The Motions of Water in Angola, Indiana</h1>
+    <p>This is a Visualization Tool for seeing the changing Lakes of Angola, Indiana</p>
+  </header>
+
+  <section>
+    <h2>Description</h2>
+    <p>This is a site that does an analysis over a small history of Angola's water on it's lakes and rivers. There is a brief explanation of how the data was gathered, it's importance, and an explanation of how the SAR data was computed to create the used maps.</p>
+  </section>
+
+  <section>
+    <h2>Image Layering</h2>
+
+    <div class="layer-area" id="layerArea">
+      <img id="layer1" alt="Layer 1">
+      <img id="layer2" alt="Layer 2">
+    </div>
+
+    <p>Angola Lake Comparison</p>
+
+    <div class="dropdowns">
+      <label for="imageSelect1">Base(Starting) year:</label>
+      <select id="imageSelect1">
+        <option value="angolaBASE.png">-- Select One --</option>
+        <option value="2024_9_14base.png">9/14/2024</option>
+        <option value="2024_10_8base.png">10/8/2024</option>
+        <option value="2024_11_1base.png">11/1/2024</option>
+        <option value="2024_12_7base.png">12/7/2024</option>
+        <option value="2025_1_12base.png">1/12/2025</option>
+        <option value="2025_2_5base.png">2/5/2025</option>
+        <option value="2025_3_1base.png">3/1/2025</option>
+        <option value="2025_4_6base.png">4/6/2025</option>
+        <option value="2025_6_5base.png">6/5/2025</option>
+        <option value="2025_7_11base.png">7/11/2025</option>
+        <option value="2025_8_4base.png">8/4/2025</option>
+        <option value="2025_9_9base.png">9/9/2025</option>
+      </select>
+      <br>
+      <label for="imageSelect2">Compared to the following/previous year:</label>
+      <select id="imageSelect2">
+        <option value="angolaBASE.png">-- Select One --</option>
+        <option value="2024_9_14border.png">>9/14/2024</option>
+        <option value="2024_10_8border.png">10/8/2024</option>
+        <option value="2024_11_1border.png">11/1/2024</option>
+        <option value="2024_12_7border.png">12/7/2024</option>
+        <option value="2025_1_12border.png">1/12/2025</option>
+        <option value="2025_2_5border.png">2/5/2025</option>
+        <option value="2025_3_1border.png">3/1/2025</option>
+        <option value="2025_4_6border.png">4/6/2025</option>
+        <option value="2025_6_5border.png">6/5/2025</option>
+        <option value="2025_7_11border.png">7/11/2025</option>
+        <option value="2025_8_4border.png">8/4/2025</option>
+        <option value="2025_9_9border.png">9/9/2025</option>
+      </select>
+    </div>
+  </section>
+
+  <script>
+    const select1 = document.getElementById('imageSelect1');
+    const select2 = document.getElementById('imageSelect2');
+    const layer1 = document.getElementById('layer1');
+    const layer2 = document.getElementById('layer2');
+
+    select1.addEventListener('change', () => {
+      layer1.src = select1.value;
+    });
+
+    select2.addEventListener('change', () => {
+      layer2.src = select2.value;
+    });
+  </script>
+
+</body>
+</html>
