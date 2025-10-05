@@ -69,6 +69,92 @@
       padding: 8px;
       font-size: 16px;
     }
+
+    /* Time Line Config*/
+    .layer-timeline-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .layer-area-container {
+      text-align: center;
+    }
+
+    .timeline-horizontal {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 90%;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px 0;
+    }
+
+    .timeline-track {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: #4a90e2;
+      border-radius: 2px;
+      z-index: 0;
+    }
+
+    .timeline-event {
+      position: relative;
+      text-align: center;
+      flex: 1;
+      z-index: 1;
+    }
+
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      background-color: #4a90e2;
+      border-radius: 50%;
+      margin: 0 auto;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px #4a90e23a;
+    }
+
+    .timeline-content {
+      margin-top: 20px;
+      background-color: white;
+      border-radius: 8px;
+      padding: 10px 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .timeline-content h4 {
+      margin: 0;
+      color: #4a90e2;
+    }
+
+    .timeline-content p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    @media (max-width: 700px) {
+      .timeline-horizontal {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .timeline-track {
+        display: none;
+      }
+
+      .timeline-event {
+        margin-bottom: 25px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -97,7 +183,7 @@
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['2024-09-14', '2024-10-08', '2024-11-01', '2024-12-07', '2025-01-12', '2025-02-05', '2025-03-01', '2025-04-06', '2025-07-01', '2025-08-04', '2025-09-09'],
+        labels: ['Sept-2024', 'Oct-2024', 'Nov-2024', 'Dec-2024', 'Jan-2025', 'Feb-2025', 'Mar-2025', 'April-2025', 'July-2025', 'Aug-2025', 'Sept-2025'],
         datasets: [{
           label: 'Monthly Sum of Rainfall (inches) From Previous Month for Steuben County, IN',
           data: [2.6, 1.49, 0.83, 1.97, 2.37, 1.23, 1.19, 3.99, 3.48, 4.29, 5.35, 1.14],
@@ -131,11 +217,12 @@
 
   <!--Image Layering Section-->
   <section>
-    <h2>Image Layering</h2>
+    <h2>Lake Layering</h2>
 
     <div class="layer-area" id="layerArea">
       <img id="layer1" alt="Layer 1">
       <img id="layer2" alt="Layer 2">
+      <img id="layer3" alt="Layer 3" style="opacity: 0.9; display: none;">
     </div>
 
     <p>Angola Lake Comparison</p>
@@ -175,8 +262,56 @@
         <option value="2025_8_4border.png">8/4/2025</option>
         <option value="2025_9_9border.png">9/9/2025</option>
       </select>
+
+      <br><br>
+      <!-- Checkbox to toggle third image -->
+      <label>
+        <input type="checkbox" id="addThirdLayer">
+        Display Water Related Event Locations
+      </label>
     </div>
   </section>
+
+   <!-- Horizontal Timeline -->
+    <div class="timeline-horizontal">
+      <div class="timeline-track"></div>
+
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>Event 1</h4>
+          <p>11/19/2020</p>
+          <p>New Trine Residence Construction</p>
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>Event 2</h4>
+          <p>3/7/2024</p>
+          <p>Crooked Lake Land Development</p>
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>Event 3</h4>
+          <p>7/15/2024</p>
+          <p>Blue-Green Algae Low-Risk Alert</p>
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>Event 4</h4>
+          <p>9/22/2025</p>
+          <p>Sewer Overflow</p>
+        </div>
+      </div>
+    </div>
 
   <!--Video Here-->
   <section>
@@ -192,6 +327,8 @@
     const select2 = document.getElementById('imageSelect2');
     const layer1 = document.getElementById('layer1');
     const layer2 = document.getElementById('layer2');
+    const layer3 = document.getElementById('layer3');
+    const checkbox = document.getElementById('addThirdLayer');
 
     select1.addEventListener('change', () => {
       layer1.src = select1.value;
@@ -199,6 +336,15 @@
 
     select2.addEventListener('change', () => {
       layer2.src = select2.value;
+    });
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        layer3.src = "waterEventsOverlay.png"; // Example 3rd image
+        layer3.style.display = "block";
+      } else {
+        layer3.style.display = "none";
+      }
     });
   </script>
 
